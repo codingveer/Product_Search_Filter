@@ -1,0 +1,14 @@
+.product-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.5rem 0;
+}
+
+.product-tag {
+  color: #1fbcff;
+  background-color: #daf4ff;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  font-size: 14px;
+}

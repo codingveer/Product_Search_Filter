@@ -1,0 +1,36 @@
+.product-filters {
+  background-color: #fff;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.product-filters-header {
+  padding: 1rem;
+  border-bottom: 1px solid#ddd;
+  color: #444;
+  font-weight: 500;
+}
+
+.product-filters-body {
+  padding: 1rem;
+}
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category-list-item {
+  padding: 1rem 3rem 1rem 0;
+}
+
+.product-filters-search {
+}
+
+.product-filters-search input {
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #f5f6f7;
+  border: none;
+}

@@ -1,0 +1,25 @@
+.product-card {
+  background-color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.product-card-selected {
+  border: 2px solid #1fbcff;
+}
+
+.product-name {
+  font-weight: 500;
+  color: #444;
+  margin: 0.25rem 0;
+}
+
+.product-category {
+  flex-shrink: 0;
+}

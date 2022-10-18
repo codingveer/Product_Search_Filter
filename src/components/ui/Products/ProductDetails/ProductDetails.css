@@ -1,0 +1,44 @@
+.product-details {
+  background-color: #fff;
+  color: #444;
+  margin: 9.375rem 10% 0 1rem;
+}
+.product-details-header {
+  padding: 1rem;
+  border-bottom: 1px solid#ddd;
+  font-weight: 500;
+}
+
+.product-details-body {
+  padding: 3rem 1rem 2rem 1rem;
+}
+
+.product-details-name {
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.external-link {
+  text-decoration: none;
+  background-color: #11b8ff;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.125rem;
+  margin: 1.25rem 0;
+  display: inline-block;
+}
+
+.external-link a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.product-description {
+  line-height: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.product-option {
+  margin: 1.5rem 0;
+  line-height: 1.5rem;
+}
