@@ -1,16 +1,21 @@
+import { useState } from "react";
 import "./ProductCard.css";
 import ProductTags from "./../ProductTags/ProductTags";
-
-const Product = ({ product, handleProductSelect, selectedProduct }) => {
+import { useProductStore } from "../../../../ContextProvider/ProductContext";
+import { observer } from "mobx-react-lite";
+const Product = ({ product, active }) => {
   const { id, productName, tags, category } = product;
-
+  let {setProductDetails}= useProductStore();
+  const [selectedProduct1, setSelectedProduct1] = useState()
   let className = "product-card";
 
-  if (selectedProduct === id) {
-    className += " product-card-selected";
-  }
+  const setSelectedProduct = (id) => { 
+    setProductDetails(id);
+    setSelectedProduct1("product-card-selected");
+  } 
+  
   return (
-    <div className={className} key={id} onClick={() => handleProductSelect(id)}>
+    <div className={`${className} ${active && selectedProduct1}`} key={id} onClick={() => setSelectedProduct(id)}>
       <div>
         <div className="product-name">{productName}</div>
         <ProductTags tags={tags} />
@@ -20,4 +25,4 @@ const Product = ({ product, handleProductSelect, selectedProduct }) => {
   );
 };
 
-export default Product;
+export default observer(Product);

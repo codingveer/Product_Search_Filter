@@ -1,28 +1,24 @@
+import { useState, useMemo, useEffect } from "react";
 import CategoryFilters from "./CategoryFilters";
 import "./ProductFilters.css";
+import { useProductStore } from "../../../../ContextProvider/ProductContext";
+import { observer } from "mobx-react-lite";
+import debounce from "lodash.debounce";
 
-const ProductFilters = ({ filters, handleSearch, handleCategorySelection }) => {
-  const { categories: selectedCategories, searchQuery } = filters;
-
+const ProductFilters = () => {
+  const { handleSearch } = useProductStore();
+  const debounceResults = useMemo((e) => debounce(handleSearch, 300))
   return (
     <div className="product-filters">
       <div className="product-filters-header">I'm looking for...</div>
       <div className="product-filters-body">
-        <CategoryFilters
-          selectedCategories={selectedCategories}
-          handleCategorySelection={handleCategorySelection}
-        />
+        <CategoryFilters />
         <div className="product-filters-search">
-          <input
-            type="search"
-            value={searchQuery}
-            onChange={(e) => handleSearch(e.target.value)}
-            placeholder="Type here..."
-          />
+          <input type="search" onKeyUp={debounceResults} placeholder="Type here..."/>
         </div>
       </div>
     </div>
   );
 };
 
-export default ProductFilters;
+export default observer(ProductFilters);

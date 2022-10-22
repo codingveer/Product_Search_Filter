@@ -1,9 +1,13 @@
-import { products } from "./../../../../data/products";
+import { configure } from 'mobx';
+configure({ useProxies: 'never' })
+import { toJS } from 'mobx';
+import { useProductStore } from "../../../../ContextProvider/ProductContext";
+import { observer } from "mobx-react-lite";
 
-const CategoryFilters = ({ selectedCategories, handleCategorySelection }) => {
-  const categories = [...new Set(products.map(({ category }) => category))];
 
-  if (categories.length === 0) {
+const CategoryFilters = () => {
+  const { handleCategorySelection, selectedCategories=[], categories=[]} = useProductStore();
+  if (!categories?.length) {
     return null;
   }
 
@@ -27,5 +31,4 @@ const CategoryFilters = ({ selectedCategories, handleCategorySelection }) => {
     </div>
   );
 };
-
-export default CategoryFilters;
+export default observer(CategoryFilters);

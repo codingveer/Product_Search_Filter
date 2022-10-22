@@ -14,12 +14,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "experimentalDecorators": true,
     "jsx": "react-jsx"
   },
   "include": [
     "vite.config.ts",
     ".eslintrc.cjs",
     "src"
-  ],
+, "data"  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

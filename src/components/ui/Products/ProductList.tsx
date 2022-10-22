@@ -1,20 +1,16 @@
 import ProductCard from "./ProductCard/ProductCard";
+import { useProductStore } from "../../../ContextProvider/ProductContext";
+import { observer } from "mobx-react-lite";
 
-const ProductList = ({ handleProductSelect, products, selectedProduct }) => {
+const ProductList = () => {
+  const { products=[], selectedProductId } = useProductStore();
+  
   return (
     <div className="products-list">
       {products.map((product) => {
-        return (
-          <ProductCard
-            key={product.id}
-            product={product}
-            handleProductSelect={handleProductSelect}
-            selectedProduct={selectedProduct}
-          />
-        );
-      })}
+        return <ProductCard key={product.id} product={product} active={selectedProductId===product.id} />})}
     </div>
-  );
-};
+  )
+}
 
-export default ProductList;
+export default observer(ProductList);

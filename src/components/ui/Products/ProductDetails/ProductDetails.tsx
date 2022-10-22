@@ -1,17 +1,16 @@
+import { useEffect } from "react";
 import "./ProductDetails.css";
 import ProductTags from "./../ProductTags/ProductTags";
-import { products } from "./../../../../data/products";
+import { observer } from "mobx-react-lite";
+import { useProductStore } from "../../../../ContextProvider/ProductContext";
 
-const getProductById = (id: Number) => {
-  return products.filter(({ id: pId }) => id === pId)[0];
-};
 
-const ProductDetails = ({ selectedProduct }) => {
-  if (!selectedProduct) return null;
-
-  const { productName, tags, manufacturerUrl, description, option1, option2 } =
-    getProductById(selectedProduct);
-
+const ProductDetails = () => {
+  const {selectedProduct, showPDP} = useProductStore();
+  if(!showPDP){
+    return
+  }
+  const {productName, tags=[], manufacturerUrl, description, option1, option2} =selectedProduct;
   return (
     <div className="product-details">
       <div className="product-details-header">Product Details</div>
@@ -51,4 +50,4 @@ const ProductDetails = ({ selectedProduct }) => {
   );
 };
 
-export default ProductDetails;
+export default observer(ProductDetails);
