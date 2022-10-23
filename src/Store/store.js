@@ -1,6 +1,5 @@
 import { configure } from 'mobx';
 configure({ useProxies: 'never' })
-import { toJS } from 'mobx';
 export const ProductStore  = () => {
     return {
         initialState : [
@@ -304,18 +303,24 @@ export const ProductStore  = () => {
             this.showPDP = true;
             this.selectedProduct = this.initialState.filter(product => product.id===id)[0];
         },
+        getProductData: false,
         handleSearch(e){
             const searchQuery= e.target.value;
             this.showPDP = false;
-            if(!searchQuery){
+            this.getProductData = true;
+            console.log(searchQuery,'searchQuery')
+
+            if(!searchQuery || searchQuery===" " ){
                 this.products =[...this.initialState];
             }
-            if(this.productDataFiltered.length){
+            if(!this.productDataFiltered.length===0){
                 this.products =[...this.productDataFiltered.filter(product => product.productName.toLowerCase().includes(searchQuery.toLowerCase()))]
-                console.log(this.products,'this.products')
+                console.log(this.productDataFiltered,'this.products')
             }else{
-                this.products =[...this.products.filter(product => product.productName.toLowerCase().includes(searchQuery.toLowerCase()))]
+                this.productDataFiltered = [...this.products.filter(product => product.productName.toLowerCase().includes(searchQuery.toLowerCase()))]
+                this.products = [...this.productDataFiltered];
             }
+            
         },
         handleCategorySelection(category){
             this.showPDP = false;
@@ -324,7 +329,12 @@ export const ProductStore  = () => {
             } else {
                 this.selectedCategories.splice(this.selectedCategories.indexOf(category), 1);
             }
-            if(this.selectedCategories.length) {
+            if(this.selectedCategories.length && this.productDataFiltered.length) {
+                this.productDataFiltered = this.productDataFiltered.filter(product => this.selectedCategories.includes(product.category));
+                this.products = [...this.productDataFiltered];
+            }
+            else if(this.selectedCategories.length && this.productDataFiltered.length===0) {
+                console.log(this.productDataFiltered,'productDataFiltered');
                 this.productDataFiltered = this.initialState.filter(product => this.selectedCategories.includes(product.category));
                 this.products = [...this.productDataFiltered];
             }

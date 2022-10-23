@@ -1,7 +1,11 @@
 .product-details {
   background-color: #fff;
   color: #444;
-  margin: 9.375rem 10% 0 1rem;
+  margin: 0rem 10% 0 1rem;
+  position: fixed;
+  height: 668px;
+  width: 320px;
+  overflow-y: scroll;
 }
 .product-details-header {
   padding: 1rem;

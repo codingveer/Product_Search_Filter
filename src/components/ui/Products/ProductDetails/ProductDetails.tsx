@@ -28,7 +28,7 @@ const ProductDetails = () => {
         {option1 && (
           <div className="product-option">
             <div>
-              <input type="radio" />
+              <input type="radio" name="product-option" />
               {option1}
             </div>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -38,11 +38,11 @@ const ProductDetails = () => {
         {option2 && (
           <div className="product-option">
             <div>
-              <input type="radio" />
+              <input type="radio" name="product-option"/>
               {option2}
             </div>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            eiusmod tempor incididunt ut labore et dolore magna aliqua
           </div>
         )}
       </div>

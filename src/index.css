@@ -129,9 +129,9 @@ table {
 }
 
 body {
-  background-color: #f5f6fa;
+  background-color: #F5F6FA;
   color: #8392a6;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
   padding: 50px 0;
   display: flex;
 }
@@ -140,9 +140,8 @@ body {
   width: 20%;
 }
 #root {
-  width: 60%;
+  width: 80%;
+  margin: auto;
 }
 
-#right-portal-root {
-  width: 20%;
-}
+

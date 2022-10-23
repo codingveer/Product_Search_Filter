@@ -1,6 +1,6 @@
 import { configure } from 'mobx';
 configure({ useProxies: 'never' })
-import { toJS } from 'mobx';
+import  {CategoryFilterData}  from './CategoryFilterData';
 import { useProductStore } from "../../../../ContextProvider/ProductContext";
 import { observer } from "mobx-react-lite";
 
@@ -13,7 +13,7 @@ const CategoryFilters = () => {
 
   return (
     <div className="category-list">
-      {categories.map((cat, index) => {
+      {CategoryFilterData.map((cat, index) => {
         return (
           <div key={index} className="category-list-item">
             <label htmlFor="category">

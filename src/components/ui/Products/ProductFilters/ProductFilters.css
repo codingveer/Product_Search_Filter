@@ -2,6 +2,7 @@
   background-color: #fff;
   border-radius: 0.25rem;
   margin-bottom: 1rem;
+  flex: 1;
 }
 
 .product-filters-header {

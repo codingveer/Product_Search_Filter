@@ -17,15 +17,18 @@ type ProductType =  {
   option2: string;
 }
 const Products = () => {
-  const {showPDP} = useProductStore();
+  const {showPDP, getProductData} = useProductStore();
    return (
     <>
-     <ProductFilters/>
-    <div style={{display: "flex"}}>
-       
-        <ProductList/>
+     <div style={{display: "flex",flexDirection: "row"}}>
+      <div style={{minWidth:"1152px"}}>
+        <ProductFilters/> 
+        {getProductData && <ProductList />}
+      </div>
+      <div>
         {showPDP && <ProductDetails />}
-    </div>
+      </div>
+      </div> 
     </>
   );
 };

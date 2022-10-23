@@ -7,7 +7,6 @@ import Tab from "./components/ui/Tabs/Tab";
 import { Products } from "./components/ui/Products";
 import { useProductStore } from "./ContextProvider/ProductContext";
 import { Observer } from "mobx-react"
-import { toJS } from 'mobx';
 
 interface TabList {
   id: Number;
@@ -45,7 +44,7 @@ const App = ()  => {
     <Observer>
       {() => {
         return (
-          <div className="App">
+          <div className="App" style={{width:"70%"}}>
             <h2 className="page-heading" role="heading">Create Demand</h2>
             <div className="page-subheading">
               Search the product you need here. Use tags to find any alternative.
