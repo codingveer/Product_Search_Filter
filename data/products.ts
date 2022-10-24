@@ -1,4 +1,14 @@
-export const products = [
+export interface ProductType {
+	id: number;
+	productName: string;
+	tags: string[];
+	category: string;
+	manufacturerUrl: string;
+	description: string[];
+	option1?: string | null;
+	option2?: string | null;
+};
+export const products:ProductType[] = [
 	{
 		"id": 1,
 		"productName": "Foxit software PhantomPDF Standard",	

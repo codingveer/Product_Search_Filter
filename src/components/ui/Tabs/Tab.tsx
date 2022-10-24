@@ -1,22 +1,21 @@
-import { MouseEventHandler } from "react";
 
 interface IProps {
-  activeTab: string;
+  activeTab:string;
   label: string;
   index: number;
   disabled: boolean;
-  onClick: MouseEventHandler<HTMLLIElement>;
+  children?: any;
+  onClick?:(param: any) => void;
 }
 
 const Tab: React.FC<IProps> = ({
   activeTab,
   label,
-  onClick,
   index,
   disabled,
 }) => {
+  
   let className = "tab-list-item";
-
   if (activeTab === label) {
     className += " tab-list-active";
   }
@@ -25,7 +24,7 @@ const Tab: React.FC<IProps> = ({
   }
 
   return (
-    <li className={className} onClick={onClick}>
+    <li className={className} >
       {`${index + 1} ${label}`}
     </li>
   );

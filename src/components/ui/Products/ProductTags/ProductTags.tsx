@@ -1,6 +1,9 @@
 import "./ProductTags.css";
 
-const ProductTags = ({ tags }) => {
+interface tagsProps {
+  tags:string[]
+}
+const ProductTags = ({ tags }:tagsProps) => {
   return (
     <div className="product-tags">
       {tags.map((tag: string) => (

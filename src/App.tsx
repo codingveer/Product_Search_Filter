@@ -1,70 +1,28 @@
-import { configure } from 'mobx';
-configure({ useProxies: 'never' });
-import "./App.css";
-import { ReactNode } from "react";
+import { observer } from "mobx-react-lite";
+import {TabList} from '../data/tabData';
 import Tabs from "./components/ui/Tabs/Tabs";
 import Tab from "./components/ui/Tabs/Tab";
 import { Products } from "./components/ui/Products";
-import { useProductStore } from "./ContextProvider/ProductContext";
-import { Observer } from "mobx-react"
+import "./App.css";
 
-interface TabList {
-  id: Number;
-  label: String;
-  disabled: Boolean;
-  component: ReactNode;
-}
-
-const TabList: TabList[] = [
-  {
-    id: 1,
-    label: "Product",
-    disabled: false,
-    component: <Products />,
-  },
-  {
-    id: 2,
-    label: "Addresses",
-    disabled: true,
-    component: null,
-  },
-  {
-    id: 3,
-    label: "Overview",
-    disabled: true,
-    component: null,
-  },
-];
-
-
-const App = ()  => {
-  const {products=[]} = useProductStore();
-
+const App: React.FC = () => {
   return (
-    <Observer>
-      {() => {
-        return (
-          <div className="App" style={{width:"70%"}}>
-            <h2 className="page-heading" role="heading">Create Demand</h2>
-            <div className="page-subheading">
-              Search the product you need here. Use tags to find any alternative.
-            </div>
-            <Tabs>
-              {TabList.map(({ label, component, disabled, id }) => {
-                return (
-                  <Tab label={label} key={id} disabled={disabled}>
-                    {(label === "Product") && 
-                        <Products productData={products}/>
-                    } 
-                   
-                  </Tab>
-                );
-              })}
-            </Tabs>
-          </div>
-        );
-      }}
-    </Observer>
+    <div className="App" style={{ width: "70%" }}>
+      <h2 className="page-heading" role="heading">Create Demand</h2>
+      <div className="page-subheading">
+        Search the product you need here. Use tags to find any alternative.
+      </div>
+      <Tabs>
+        {TabList.map(({ label, disabled, id }, index) => {
+          return (
+            <Tab label={label} key={id} disabled={disabled} index={index} activeTab={label}>
+              {(label === "Product") && <Products />}
+            </Tab>
+          );
+        })}
+      </Tabs>
+    </div>
   )
 }
-export default App;
+
+export default observer(App);

@@ -1,1 +1,0 @@
-export const CategoryFilterData = ["Daily Business","Developer","Data Analytics","Management Tools","Graphic Editors","Text Editors"];

@@ -1,11 +1,9 @@
-import { configure } from 'mobx';
-configure({ useProxies: 'never' })
 import  {CategoryFilterData}  from './CategoryFilterData';
 import { useProductStore } from "../../../../ContextProvider/ProductContext";
 import { observer } from "mobx-react-lite";
 
 
-const CategoryFilters = () => {
+const CategoryFilters:React.FC = () => {
   const { handleCategorySelection, selectedCategories=[], categories=[]} = useProductStore();
   if (!categories?.length) {
     return null;

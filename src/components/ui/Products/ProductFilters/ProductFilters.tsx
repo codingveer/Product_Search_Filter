@@ -1,4 +1,3 @@
-import { useState, useMemo, useEffect } from "react";
 import CategoryFilters from "./CategoryFilters";
 import "./ProductFilters.css";
 import { useProductStore } from "../../../../ContextProvider/ProductContext";
@@ -7,7 +6,7 @@ import debounce from "lodash.debounce";
 
 const ProductFilters = () => {
   const { handleSearch } = useProductStore();
-  const debounceResults = useMemo((e) => debounce(handleSearch, 300))
+  const debounceResults = debounce((e) =>handleSearch(e), 300);
   return (
     <div className="product-filters">
       <div className="product-filters-header">I'm looking for...</div>
