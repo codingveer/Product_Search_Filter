@@ -6,20 +6,23 @@
   margin-bottom: 1rem;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
+  cursor: pointer !important;
   border: 2px solid transparent;
 }
 
 .product-card-selected {
   border: 2px solid #1fbcff;
+  cursor: pointer;
 }
 
 .product-name {
   font-weight: 500;
   color: #444;
   margin: 0.25rem 0;
+  cursor: pointer;
 }
 
 .product-category {
   flex-shrink: 0;
+  cursor: pointer;
 }

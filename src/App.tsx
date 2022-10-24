@@ -7,7 +7,7 @@ import "./App.css";
 
 const App: React.FC = () => {
   return (
-    <div className="App" style={{ width: "70%" }}>
+    <div className="App" >
       <h2 className="page-heading" role="heading">Create Demand</h2>
       <div className="page-subheading">
         Search the product you need here. Use tags to find any alternative.

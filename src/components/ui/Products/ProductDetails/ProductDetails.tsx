@@ -9,9 +9,6 @@ const ProductDetails: React.FunctionComponent = () => {
   const { selectedProduct, showPDP } = useProductStore();
   const { productName, tags = [], manufacturerUrl, description, option1, option2 } = selectedProduct;
 
-  // if (!showPDP) {
-  //   return
-  // }
   return (
     <div className="product-details">
       <div className="product-details-header">Product Details</div>

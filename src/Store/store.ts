@@ -13,7 +13,8 @@ export interface ProductStoreType {
     productDataFiltered: ProductType[];
     handleCategorySelection(category: any): void;
     setProductDetails(id:number):void;
-    handleSearch(e: React.KeyboardEvent<HTMLInputElement>):void
+    handleSearch(e: React.KeyboardEvent<HTMLInputElement>):void;
+    searchQuery:string;
 }
 
 export function ProductStore():ProductStoreType|null{
@@ -36,25 +37,40 @@ export function ProductStore():ProductStoreType|null{
         selectedProductId:1,
         setProductDetails(id:number){
             this.showPDP = true;
+            this.selectedProductId=id,
             this.selectedProduct = this.initialState.filter(product => product.id===id)[0];
         },
         getProductData: false,
+        searchQuery:" ",
         handleSearch(e){
             const searchQuery= (e.target as HTMLInputElement).value;
+            this.searchQuery=searchQuery;
             this.showPDP = false;
             this.getProductData = true;
 
-            if(!searchQuery || searchQuery===" "){
+            if(!searchQuery || searchQuery===" " || searchQuery===""){
                 this.products =[...this.initialState];
             }
+         
             if(!this.productDataFiltered.length && !this.selectedCategories.length){
-                const productDataFiltered = [...this.initialState.filter(product => product.productName.toLowerCase().includes(searchQuery.toLowerCase()))]
-                this.products = [...productDataFiltered];
+                this.productDataFiltered = [...this.initialState.filter(product => product.productName.toLowerCase().includes(searchQuery.toLowerCase()))]
+                this.products = [...this.productDataFiltered];
             }
-            else if(!!this.productDataFiltered.length && !!this.selectedCategories.length){
-                this.products =[...this.productDataFiltered.filter(product => product.productName.toLowerCase().includes(searchQuery.toLowerCase()))]
+            if(this.productDataFiltered.length && this.selectedCategories.length){
+                const data =this.productDataFiltered.filter(product => {
+                this.selectedCategories.includes(product.category) && product.productName.toLowerCase().includes(this.searchQuery.toLowerCase())
+                });
+                this.products = [...data];
             }
-            
+            if(this.productDataFiltered.length && !this.selectedCategories.length){
+                const data = this.productDataFiltered.filter( product => {
+                    console.log(product.productName.toLowerCase());
+                    console.log(searchQuery.toLowerCase());
+                    return product.productName.toLowerCase().includes(searchQuery.toLowerCase());
+                });
+                this.products = [...data];
+            }
+
         },
         handleCategorySelection(category){
             this.showPDP = false;
@@ -64,11 +80,15 @@ export function ProductStore():ProductStoreType|null{
                 this.selectedCategories.splice(this.selectedCategories.indexOf(category), 1);
             }
             if(this.selectedCategories.length && this.productDataFiltered.length) {
-                this.productDataFiltered = this.productDataFiltered.filter(product => this.selectedCategories.includes(product.category));
+                if(this.searchQuery.length){
+                    this.productDataFiltered = this.productDataFiltered.filter(product => (this.selectedCategories.includes(product.category)) && (product.productName.toLowerCase().includes(this.searchQuery.toLowerCase())));
+
+                }else{
+                    this.productDataFiltered = this.productDataFiltered.filter(product => this.selectedCategories.includes(product.category));
+                }
                 this.products = [...this.productDataFiltered];
             }
-            else if(this.selectedCategories.length && this.productDataFiltered.length===0) {
-                console.log(this.productDataFiltered.length,'productDataFiltered');
+            else if(this.selectedCategories.length && this.productDataFiltered.length) {
                 this.productDataFiltered = this.initialState.filter(product => this.selectedCategories.includes(product.category));
                 this.products = [...this.productDataFiltered];
             }

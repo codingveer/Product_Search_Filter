@@ -1,11 +1,11 @@
 
 interface IProps {
-  activeTab:string;
+  activeTab: string;
   label: string;
   index: number;
   disabled: boolean;
   children?: any;
-  onClick?:(param: any) => void;
+  onClick?: (param: any) => void;
 }
 
 const Tab: React.FC<IProps> = ({
@@ -14,7 +14,7 @@ const Tab: React.FC<IProps> = ({
   index,
   disabled,
 }) => {
-  
+
   let className = "tab-list-item";
   if (activeTab === label) {
     className += " tab-list-active";

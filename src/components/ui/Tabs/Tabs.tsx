@@ -15,7 +15,7 @@ interface IProps {
 }
 
 const Tabs: FC<IProps> = ({ children }) => {
-  const label:string = children[0].props.label;
+  const label: string = children[0].props.label;
   const [activeTab, setActiveTab] = useState(label);
 
   const onClickTabItem = (label: string) => {

@@ -2,11 +2,18 @@ import CategoryFilters from "./CategoryFilters";
 import "./ProductFilters.css";
 import { useProductStore } from "../../../../ContextProvider/ProductContext";
 import { observer } from "mobx-react-lite";
-import debounce from "lodash.debounce";
+
+const debounce = (fn: Function) => {
+  let timeoutId: ReturnType<typeof setTimeout>;
+  return function (this: any, ...args: any[]) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn.apply(this, args), 100);
+  };
+};
 
 const ProductFilters = () => {
   const { handleSearch } = useProductStore();
-  const debounceResults = debounce((e) =>handleSearch(e), 300);
+  const debounceResults = debounce(handleSearch);
   return (
     <div className="product-filters">
       <div className="product-filters-header">I'm looking for...</div>
