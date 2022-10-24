@@ -6,7 +6,7 @@ interface TabProps {
   props: {
     label: string;
     disabled: boolean;
-    children: ReactNode;
+    children?: ReactNode;
   };
 }
 

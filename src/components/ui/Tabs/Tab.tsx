@@ -24,7 +24,7 @@ const Tab: React.FC<IProps> = ({
   }
 
   return (
-    <li className={className} >
+    <li className={className} data-testid={label} >
       {`${index + 1} ${label}`}
     </li>
   );

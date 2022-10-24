@@ -7,7 +7,7 @@ import "./ProductDetails.css";
 
 const ProductDetails: React.FunctionComponent = () => {
   const { selectedProduct, showPDP } = useProductStore();
-  const { productName, tags = [], manufacturerUrl, description, option1, option2 } = selectedProduct;
+  const { productName="", tags = [], manufacturerUrl, description, option1, option2 } = selectedProduct;
 
   return (
     <div className="product-details">

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.95% </span>
+                <span class="strong">90.32% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>20/23</span>
+                <span class='fraction'>28/31</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>1/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.95% </span>
+                <span class="strong">90.32% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/23</span>
+                <span class='fraction'>28/31</span>
             </div>
         
             
@@ -86,42 +86,66 @@
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import "./ProductCard.css";
 import ProductTags from "./../ProductTags/ProductTags";
+import { useProductStore } from "../../../../ContextProvider/ProductContext";
+import { observer } from "mobx-react-lite";
+import { ProductType } from './../../../../../data/productTypes'
 &nbsp;
-const Product = ({ product, handleProductSelect, selectedProduct }) =&gt; {
+interface IProps {
+  product: ProductType;
+}
+const Product = ({ product }: IProps) =&gt; {
   const { id, productName, tags, category } = product;
-&nbsp;
+  let { setProductDetails, selectedProductId } = useProductStore();
   let className = "product-card";
 &nbsp;
-  if (selectedProduct === id) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >    className += " product-card-selected";</span>
+  const setSelectedProduct = (<span class="fstat-no" title="function not covered" >id: number) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    selectedProductId = id;</span>
+<span class="cstat-no" title="statement not covered" >    setProductDetails(id);</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
-<span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;div className={className} key={id} onClick={<span class="fstat-no" title="function not covered" >() =&gt; handleProductSelect(id)}&gt;</span>
+&nbsp;
+  return (
+    &lt;div className={`${className} ${(selectedProductId === <span class="branch-0 cbranch-no" title="branch not covered" >id) &amp;&amp; "product-card-selected"}`} key={i</span>d} onClick={<span class="fstat-no" title="function not covered" >() =&gt; setSelectedProduct(id)}&gt;</span>
       &lt;div&gt;
         &lt;div className="product-name"&gt;{productName}&lt;/div&gt;
         &lt;ProductTags tags={tags} /&gt;
@@ -131,7 +155,7 @@ const Product = ({ product, handleProductSelect, selectedProduct }) =&gt; {
   );
 };
 &nbsp;
-export default Product;
+export default observer(Product);
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -139,7 +163,7 @@ export default Product;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-10-18T08:59:16.544Z
+                at 2022-10-24T12:24:28.520Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

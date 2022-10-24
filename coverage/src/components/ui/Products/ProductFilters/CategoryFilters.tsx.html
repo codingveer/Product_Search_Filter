@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.09% </span>
+                <span class="strong">40.62% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>27/31</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>3/4</span>
+                <span class='fraction'>13/32</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">50% </span>
-                <span class="quiet">Functions</span>
+                <span class="quiet">Branches</span>
                 <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.09% </span>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">40.62% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>27/31</span>
+                <span class='fraction'>13/32</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -97,73 +97,73 @@
 <a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { products } from "./../../../../data/products";
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import  {CategoryFilterData}  from './CategoryFilterData';
+import { useProductStore } from "../../../../ContextProvider/ProductContext";
+import { observer } from "mobx-react-lite";
 &nbsp;
-const CategoryFilters = ({ selectedCategories, handleCategorySelection }) =&gt; {
-  const categories = [...new Set(products.map(({ category }) =&gt; category))];
 &nbsp;
-  if (categories.length === 0) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >    return null;</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;div className="category-list"&gt;
-      {categories.map((cat, index) =&gt; {
-        return (
-          &lt;div key={index} className="category-list-item"&gt;
-            &lt;label htmlFor="category"&gt;
-              &lt;input
-                name="category"
-                checked={selectedCategories.includes(cat)}
-                type="checkbox"
-                onChange={<span class="fstat-no" title="function not covered" >() =&gt; handleCategorySelection(cat)}</span>
-              /&gt;
-            &lt;/label&gt;
-            {cat}
-          &lt;/div&gt;
-        );
-      })}
-    &lt;/div&gt;
-  );
-};
+const CategoryFilters:React.FC = () =&gt; {
+  const { handleCategorySelection, selectedCategories=[], categories=[]} = useProductStore();
+  if (!categories?.length) {
+    return null;
+  }
 &nbsp;
-export default CategoryFilters;
-&nbsp;</pre></td></tr></table></pre>
+<span class="branch-0 cbranch-no" title="branch not covered" >  return (</span>
+<span class="cstat-no" title="statement not covered" >    &lt;div className="category-list"&gt;</span>
+<span class="cstat-no" title="statement not covered" >      {CategoryFilterData.map((cat, index) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        return (</span>
+<span class="cstat-no" title="statement not covered" >          &lt;div key={index} className="category-list-item"&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;label htmlFor="category"&gt;</span>
+<span class="cstat-no" title="statement not covered" >              &lt;input</span>
+<span class="cstat-no" title="statement not covered" >                name="category"</span>
+<span class="cstat-no" title="statement not covered" >                checked={selectedCategories.includes(cat)}</span>
+<span class="cstat-no" title="statement not covered" >                type="checkbox"</span>
+<span class="cstat-no" title="statement not covered" >                onChange={() =&gt; handleCategorySelection(cat)}</span>
+<span class="cstat-no" title="statement not covered" >              /&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;/label&gt;</span>
+<span class="cstat-no" title="statement not covered" >            {cat}</span>
+<span class="cstat-no" title="statement not covered" >          &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >        );</span>
+<span class="cstat-no" title="statement not covered" >      })}</span>
+<span class="cstat-no" title="statement not covered" >    &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >  );</span>
+<span class="cstat-no" title="statement not covered" >};</span>
+export default observer(CategoryFilters);</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-10-18T08:59:16.544Z
+                at 2022-10-24T12:24:28.520Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

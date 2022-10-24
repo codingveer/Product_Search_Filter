@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">90% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>28/28</span>
+                <span class='fraction'>27/30</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>2/2</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">90% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>28/28</span>
+                <span class='fraction'>27/30</span>
             </div>
         
             
@@ -91,18 +91,22 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -121,32 +125,34 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import CategoryFilters from "./CategoryFilters";
 import "./ProductFilters.css";
+import { useProductStore } from "../../../../ContextProvider/ProductContext";
+import { observer } from "mobx-react-lite";
 &nbsp;
-const ProductFilters = ({ filters, handleSearch, handleCategorySelection }) =&gt; {
-  const { categories: selectedCategories, searchQuery } = filters;
+const debounce = (fn: Function) =&gt; {
+  let timeoutId: ReturnType&lt;typeof setTimeout&gt;;
+  return function (this: any, ...args: any[]) {
+<span class="cstat-no" title="statement not covered" >    clearTimeout(timeoutId);</span>
+<span class="cstat-no" title="statement not covered" >    timeoutId = setTimeout(() =&gt; fn.apply(this, args), 100);</span>
+<span class="cstat-no" title="statement not covered" >  };</span>
+};
 &nbsp;
+const ProductFilters = () =&gt; {
+  const { handleSearch } = useProductStore();
+  const debounceResults = debounce(handleSearch);
   return (
     &lt;div className="product-filters"&gt;
       &lt;div className="product-filters-header"&gt;I'm looking for...&lt;/div&gt;
       &lt;div className="product-filters-body"&gt;
-        &lt;CategoryFilters
-          selectedCategories={selectedCategories}
-          handleCategorySelection={handleCategorySelection}
-        /&gt;
+        &lt;CategoryFilters /&gt;
         &lt;div className="product-filters-search"&gt;
-          &lt;input
-            type="search"
-            value={searchQuery}
-            onChange={(<span class="fstat-no" title="function not covered" >e) =&gt; handleSearch(e.target.value)}</span>
-            placeholder="Type here..."
-          /&gt;
+          &lt;input type="search" onKeyUp={debounceResults} placeholder="Type here..."/&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   );
 };
 &nbsp;
-export default ProductFilters;
+export default observer(ProductFilters);
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -154,7 +160,7 @@ export default ProductFilters;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-10-18T08:59:16.544Z
+                at 2022-10-24T12:24:28.520Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
